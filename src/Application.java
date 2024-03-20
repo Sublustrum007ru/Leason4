@@ -20,10 +20,10 @@ public class Application {
         list.add(10);
         list.add(11);
         list.add(12);
-//        System.out.println("Index =  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  10, 11]");
-//        System.out.println("Number = " + list + " - " + "Size = " + list.size());
+        System.out.println("Index =  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  10, 11]");
+        System.out.println("Number = " + list + " - " + "Size = " + list.size());
         list.removeByIndex(1);
-//        System.out.println("Number = " + list + " - " + "Size = " + list.size());
+        System.out.println("Number = " + list + " - " + "Size = " + list.size());
         list.remove(5);
         System.out.println("Before added Number = " + list + " - " + "Size = " + list.size());
         list.add(5, 777);
