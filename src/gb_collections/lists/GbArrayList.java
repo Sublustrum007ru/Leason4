@@ -3,8 +3,6 @@ package gb_collections.lists;
 import gb_collections.GbList;
 import gb_collections.lists.util.ArrayIterator;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class GbArrayList<W> implements GbList<W> {
@@ -50,7 +48,6 @@ public class GbArrayList<W> implements GbList<W> {
             values = (W[]) new Object[values.length + 1];
             System.arraycopy(temp, 0, values, 0, index);
             values[index] = value;
-            int amountElementsAftrerIndex = values.length - index - 1;
             for (int i = index; i < temp.length ; i++) {
                 if(!temp[i].equals(null)){
                     values[i + 1] = temp[i];

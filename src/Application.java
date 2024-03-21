@@ -1,5 +1,9 @@
 import gb_collections.GbList;
 import gb_collections.lists.GbArrayList;
+import gb_collections.lists.GbLinkedList;
+
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Application {
     public static void application(){
@@ -32,6 +36,33 @@ public class Application {
         GbList<String> stringList = new GbArrayList<>();
         stringList.add("sdsdf");
         stringList.add("test1");
-//        System.out.println(stringList);
+        System.out.println(stringList);
+        System.out.println();
+
+        System.out.println("*****************************");
+        System.out.println("Begin LinkedList");
+        GbList<String> linkList = new GbLinkedList<>();
+        linkList.add("test1");
+        linkList.add("test2");
+        linkList.add("test3");
+        linkList.add("test4");
+        linkList.add("test5");
+        linkList.add("test6");
+        linkList.add("test7");
+        linkList.add("test8");
+        linkList.add("test9");
+        linkList.add("test10");
+        linkList.add("test11");
+        linkList.add("test12");
+        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
+        System.out.println("*****************************");
+        linkList.add(10, "testing");
+        linkList.add(12, "testoviy");
+        linkList.add(0, "qwerty");
+        linkList.add(200, "Altair");
+        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
+        linkList.removeByIndex(15);
+        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
+
     }
 }
