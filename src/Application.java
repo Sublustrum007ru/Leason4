@@ -42,34 +42,40 @@ public class Application {
         System.out.println("*****************************");
         System.out.println("Begin LinkedList");
         GbList<String> linkList = new GbLinkedList<>();
+        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
         linkList.add("test1");
         linkList.add("test2");
         linkList.add("test3");
         linkList.add("test4");
-        linkList.add("test5");
         linkList.add("test6");
         linkList.add("test7");
         linkList.add("test8");
         linkList.add("test9");
         linkList.add("test10");
-        linkList.add("test11");
-        linkList.add("test12");
-        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
+        System.out.println("Size1 = " + linkList.size());
         System.out.println("*****************************");
-        linkList.add(10, "testing");
-        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
-        linkList.add(12, "testoviy");
-        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
-        linkList.add(0, "qwerty");
-        linkList.add(200, "Altair");
-        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
+        linkList.add(4, "test5");
+        System.out.println("Size2 = " + linkList.size());
+        linkList.add(10, "test11");
+        System.out.println("Size3 = " + linkList.size());
+        linkList.add(20, "res");
         System.out.println("*****************************");
-        System.out.println("Before delete");
-        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
-        linkList.removeByIndex(12);
+        for(int i = 0; i < linkList.size(); i++){
+            System.out.println(linkList.get(i));
+        }
         System.out.println("*****************************");
-        System.out.println("After delete");
-        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
+        System.out.println("Size после добавлений = " + linkList.size());
+        System.out.println("*****************************");
+        linkList.removeByIndex(0);
+        linkList.removeByIndex(9);
+        linkList.removeByIndex(5);
+        for(int i = 0; i < linkList.size(); i++){
+            System.out.println(linkList.get(i));
+        }
+        System.out.println("*****************************");
+        System.out.println("Size после удаления = " + linkList.size());
+        System.out.println("*****************************");
+        System.out.println(linkList);
 
     }
 }

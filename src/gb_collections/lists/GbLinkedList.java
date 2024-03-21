@@ -3,6 +3,7 @@ package gb_collections.lists;
 import gb_collections.GbList;
 import gb_collections.lists.util.Node;
 
+import java.sql.SQLOutput;
 import java.util.Iterator;
 
 public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
@@ -15,10 +16,6 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
         this.size = 0;
     }
 
-    private Node<Sublustrum007> createNode(Node<Sublustrum007> prev, Sublustrum007 value, Node<Sublustrum007> next){
-        this.size++;
-        return new Node<>(prev, value, next);
-    }
     private Node<Sublustrum007> findNodeByIndex(int index){
         if(index > size - 1) {
             System.out.println("Введен не корректный индекс");
@@ -34,36 +31,37 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
        }
     }
 
+    private Node<Sublustrum007> createNode(Node<Sublustrum007> prev, Sublustrum007 value, Node<Sublustrum007> next){
+        this.size++;
+        return new Node<>(prev, value, next);
+    }
     @Override
     public void add(Sublustrum007 value) {
         if(size == 0){
             first = createNode(null, value, null);
             last = first;
         }else{
-            Node<Sublustrum007> targetNode = last;
+            Node<Sublustrum007> temp = last;
             last = createNode(last, value, null);
-            targetNode.next = last;
+            temp.next = last;
         }
     }
 
     @Override
     public void add(int index, Sublustrum007 value) {
-        Node<Sublustrum007> targetNode;
-        if(index == 0){
-            if(first != null){
-                targetNode = first;
-                first = createNode(null, value, targetNode);
-                targetNode.prev = first;
+        if(index < 0 || index > size){
+            System.out.println("Введен не корректный индекс " + index);
+            return;
+        }
+        if(index == 0 || index == size){
+            if(first == null){
+                add(value);
             }else{
                 add(value);
             }
-        }else if(index >= size - 1){
-            System.out.println("Введенный индекс больше или равне размеру листа.");
-            System.out.println("Число добавленов в конец списка.");
-            add(value);
-        }else{
-            targetNode = findNodeByIndex(index);
-            targetNode.prev.next = createNode(targetNode.prev, value, targetNode);
+        }else {
+            Node<Sublustrum007> temp = findNodeByIndex(index);
+            temp.prev.next = createNode(temp.prev, value, temp);
         }
     }
 
@@ -73,27 +71,24 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
     }
 
     @Override
-    public void remove(Sublustrum007 value) {
-
+    public void remove(Sublustrum007 value){
     }
 
     @Override
     public void removeByIndex(int index) {
-        if(index < 0 || index > size - 1){
-            System.out.println("Введен не верный индекс");
+        if(index < 0 || index > size){
+            System.out.println("Введен не корректный индекс " + index);
             return;
         }
-        Node<Sublustrum007> targetNode = findNodeByIndex(index);
+        Node<Sublustrum007> temp = findNodeByIndex(index);
         if(index == 0){
-            first = targetNode.next;
-            last = targetNode.prev;
-        }else if(index == size - 1){
-            last = targetNode.prev;
-            last.next = null;
+            first = temp.next;
+        }
+        else if(index == size - 1){
+            temp.prev.next = null;
         }else{
-            Node temp = targetNode.prev;
-            temp.next = targetNode.next;
-            targetNode.next = temp;
+            temp.prev.next = temp.next;
+            temp.next.prev = temp.prev;
         }
         size--;
     }
@@ -109,18 +104,16 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
     }
     @Override
     public String toString() {
-        Node<Sublustrum007> targetNode = this.first;
+        Node<Sublustrum007> temp = this.first;
         StringBuilder builder = new StringBuilder("[");
-        int i = 0;
-        while (targetNode.next != null) {
-            builder.append(targetNode.value).append(", ");
-            targetNode = targetNode.next;
+        while(temp.next!= null){
+            builder.append(temp.value).append(", ");
+            temp = temp.next;
         }
-        builder.append(targetNode.value).append("]");
-        if(builder.length() == 1) {
+        builder.append(temp.value).append("]");
+        if(builder.length() == 1){
             return "[]";
         }
         return builder.toString();
-        }
-
+    }
 }
