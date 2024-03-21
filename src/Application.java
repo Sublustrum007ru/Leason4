@@ -57,11 +57,18 @@ public class Application {
         System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
         System.out.println("*****************************");
         linkList.add(10, "testing");
+        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
         linkList.add(12, "testoviy");
+        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
         linkList.add(0, "qwerty");
         linkList.add(200, "Altair");
         System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
-        linkList.removeByIndex(15);
+        System.out.println("*****************************");
+        System.out.println("Before delete");
+        System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
+        linkList.removeByIndex(12);
+        System.out.println("*****************************");
+        System.out.println("After delete");
         System.out.println("String = " + linkList + " - " + "Size = " + linkList.size());
 
     }

@@ -40,9 +40,9 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
             first = createNode(null, value, null);
             last = first;
         }else{
-            Node<Sublustrum007> target = last;
+            Node<Sublustrum007> targetNode = last;
             last = createNode(last, value, null);
-            target.next = last;
+            targetNode.next = last;
         }
     }
 
@@ -58,12 +58,12 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
                 add(value);
             }
         }else if(index >= size - 1){
-            System.out.println("Введенный индекс " + index + " больше или равно размеру списка.");
-            System.out.println("Число добавлено в конец списка");
+            System.out.println("Введенный индекс больше или равне размеру листа.");
+            System.out.println("Число добавленов в конец списка.");
             add(value);
         }else{
             targetNode = findNodeByIndex(index);
-            targetNode.next = createNode(targetNode, value, targetNode.next);
+            targetNode.prev.next = createNode(targetNode.prev, value, targetNode);
         }
     }
 
@@ -79,13 +79,6 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
 
     @Override
     public void removeByIndex(int index) {
-//        first.next -> targetNode.next -> last
-//             first <- targetNode.prev <- last.prev
-//             test4 ->      test5      -> test6
-//                 4        -> 5 ->        6
-//                 4        <- 5 <-        6
-//                 4          ->           6
-//                 4          <-           6
         if(index < 0 || index > size - 1){
             System.out.println("Введен не верный индекс");
             return;
@@ -94,15 +87,15 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
         if(index == 0){
             first = targetNode.next;
             last = targetNode.prev;
-            size--;
-        }else if(index == size){
-            last = targetNode.prev;
-            first = targetNode.next;
-            size--;
         }else if(index == size - 1){
-            System.out.println("index = " + index +" | size - 1 = " + (size - 1));
-
+            last = targetNode.prev;
+            last.next = null;
+        }else{
+            Node temp = targetNode.prev;
+            temp.next = targetNode.next;
+            targetNode.next = temp;
         }
+        size--;
     }
 
     @Override
