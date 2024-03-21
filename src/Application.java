@@ -60,18 +60,14 @@ public class Application {
         System.out.println("Size3 = " + linkList.size());
         linkList.add(20, "res");
         System.out.println("*****************************");
-        for(int i = 0; i < linkList.size(); i++){
-            System.out.println(linkList.get(i));
-        }
+        System.out.println(linkList);
         System.out.println("*****************************");
         System.out.println("Size после добавлений = " + linkList.size());
         System.out.println("*****************************");
         linkList.removeByIndex(0);
         linkList.removeByIndex(9);
         linkList.removeByIndex(5);
-        for(int i = 0; i < linkList.size(); i++){
-            System.out.println(linkList.get(i));
-        }
+        System.out.println(linkList);
         System.out.println("*****************************");
         System.out.println("Size после удаления = " + linkList.size());
         System.out.println("*****************************");

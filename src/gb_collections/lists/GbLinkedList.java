@@ -104,15 +104,15 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
     }
     @Override
     public String toString() {
-        Node<Sublustrum007> temp = this.first;
         StringBuilder builder = new StringBuilder("[");
-        while(temp.next!= null){
-            builder.append(temp.value).append(", ");
-            temp = temp.next;
-        }
-        builder.append(temp.value).append("]");
-        if(builder.length() == 1){
-            return "[]";
+        int count = 0;
+        for(int i = 0; i < this.size(); i++){
+            if(count < size() - 1) {
+                builder.append(this.get(count)).append(", ");
+            }else {
+                builder.append(this.get(count)).append("]");
+            }
+            count++;
         }
         return builder.toString();
     }
