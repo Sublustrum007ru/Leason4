@@ -10,7 +10,6 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
     private int size;
     private Node<Sublustrum007> first;
     private Node<Sublustrum007> last;
-    private Object array;
 
     public GbLinkedList(){
         this.size = 0;
@@ -121,7 +120,18 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
     }
     @Override
     public Iterator<Sublustrum007> iterator() {
-        return null;
+        return new Iterator<Sublustrum007>() {
+            int index = 0;
+            @Override
+            public boolean hasNext() {
+                return index < size();
+            }
+
+            @Override
+            public Sublustrum007 next() {
+                return get(index++);
+            }
+        };
 
     }
 

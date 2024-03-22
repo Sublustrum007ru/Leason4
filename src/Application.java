@@ -119,6 +119,5 @@ public class Application {
         System.out.println("Size после удаления = " + linkList2.size());
         System.out.println("*****************************");
         System.out.println(linkList2);
-
     }
 }
