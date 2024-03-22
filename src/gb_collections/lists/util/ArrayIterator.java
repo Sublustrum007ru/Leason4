@@ -1,6 +1,8 @@
 package gb_collections.lists.util;
 
 
+import gb_collections.lists.GbLinkedList;
+
 import java.util.Iterator;
 
 public class ArrayIterator<Q> implements Iterator<Q>{
@@ -11,6 +13,7 @@ public class ArrayIterator<Q> implements Iterator<Q>{
         this.array = array;
         this.index = 0;
     }
+
 
     @Override
     public boolean hasNext() {

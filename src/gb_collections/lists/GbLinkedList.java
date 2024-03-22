@@ -1,9 +1,8 @@
 package gb_collections.lists;
 
 import gb_collections.GbList;
+import gb_collections.lists.util.ArrayIterator;
 import gb_collections.lists.util.Node;
-
-import java.sql.SQLOutput;
 import java.util.Iterator;
 
 public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
@@ -11,6 +10,7 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
     private int size;
     private Node<Sublustrum007> first;
     private Node<Sublustrum007> last;
+    private Object array;
 
     public GbLinkedList(){
         this.size = 0;
@@ -72,6 +72,12 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
 
     @Override
     public void remove(Sublustrum007 value){
+        int result = 0;
+        for(int i = 0; i < this.size(); i++){
+            if(this.get(i) == value){
+                removeByIndex(i);
+            }
+        }
     }
 
     @Override
@@ -92,15 +98,9 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
         }
         size--;
     }
-
     @Override
     public int size() {
         return size;
-    }
-
-    @Override
-    public Iterator<Sublustrum007> iterator() {
-        return null;
     }
     @Override
     public String toString() {
@@ -114,6 +114,15 @@ public class GbLinkedList<Sublustrum007> implements GbList<Sublustrum007> {
             }
             count++;
         }
+        if(builder.length() == 1){
+            return "[]";
+        }
         return builder.toString();
     }
+    @Override
+    public Iterator<Sublustrum007> iterator() {
+        return null;
+
+    }
+
 }

@@ -2,7 +2,6 @@ package gb_collections.lists;
 
 import gb_collections.GbList;
 import gb_collections.lists.util.ArrayIterator;
-
 import java.util.Iterator;
 
 public class GbArrayList<W> implements GbList<W> {
